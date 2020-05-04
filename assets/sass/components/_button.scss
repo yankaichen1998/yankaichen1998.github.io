@@ -1,5 +1,5 @@
 ///
-/// Paradigm Shift by HTML5 UP
+/// Forty by HTML5 UP
 /// html5up.net | @ajlkn
 /// Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 ///
@@ -18,56 +18,37 @@
 			'color #{_duration(transition)} ease-in-out'
 		));
 		background-color: transparent;
-		border-radius: _size(border-radius);
 		border: 0;
-		box-shadow: inset 0 0 0 2px _palette(border);
-		color: _palette(fg-bold) !important;
+		border-radius: 0;
+		box-shadow: inset 0 0 0 2px _palette(fg-bold);
+		color: _palette(fg-bold);
 		cursor: pointer;
 		display: inline-block;
-		font-family: _font(family-heading);
-		font-size: 0.6rem;
-		font-weight: _font(weight-heading-light);
-		height: (_size(element-height) * 1);
-		letter-spacing: _font(kerning-heading);
-		line-height: (_size(element-height) * 1);
-		padding: 0 2rem;
+		font-size: 0.8em;
+		font-weight: _font(weight-bold);
+		height: 3.5em;
+		letter-spacing: _font(letter-spacing-alt);
+		line-height: 3.5em;
+		padding: 0 1.75em;
 		text-align: center;
 		text-decoration: none;
 		text-transform: uppercase;
 		white-space: nowrap;
 
-		&:hover {
-			box-shadow: inset 0 0 0 2px _palette(accent-alt);
-			color: _palette(accent-alt) !important;
+		&:hover, &:active {
+			box-shadow: inset 0 0 0 2px _palette(highlight);
+			color: _palette(highlight);
 		}
 
 		&:active {
-			background-color: _palette(accent-bg);
-			box-shadow: inset 0 0 0 2px _palette(accent-alt);
-			color: _palette(accent-alt) !important;
-		}
-
-		&.small {
-			font-size: 0.5rem;
-			height: _size(element-height) * 0.75;
-			line-height: _size(element-height) * 0.75;
-			padding: 0 1.25rem;
-		}
-
-		&.large {
-			font-size: 0.7rem;
-			height: _size(element-height) * 1.0875;
-			line-height: _size(element-height) * 1.0875;
-			padding: 0 3.25rem;
-		}
-
-		&.wide {
-			min-width: 13rem;
+			background-color: transparentize(_palette(highlight), 0.9);
+			box-shadow: inset 0 0 0 2px desaturate(darken(_palette(highlight), 15), 5);
+			color: desaturate(darken(_palette(highlight), 15), 5);
 		}
 
 		&.icon {
 			&:before {
-				margin-right: 0.5rem;
+				margin-right: 0.5em;
 			}
 		}
 
@@ -75,41 +56,75 @@
 			width: 100%;
 		}
 
-		&.disabled,
-		&:disabled {
-			@include vendor('pointer-events', 'none');
-			opacity: 0.25;
+		&.small {
+			font-size: 0.6em;
+		}
+
+		&.large {
+			font-size: 1.25em;
+			height: 3em;
+			line-height: 3em;
+		}
+
+		&.next {
+			padding-right: 4.5em;
+			position: relative;
+
+			&:before, &:after {
+				@include vendor('transition', 'opacity #{_duration(transition)} ease-in-out');
+				background-position: center right;
+				background-repeat: no-repeat;
+				background-size: 36px 24px;
+				content: '';
+				display: block;
+				height: 100%;
+				position: absolute;
+				right: 1.5em;
+				top: 0;
+				vertical-align: middle;
+				width: 36px;
+			}
+
+			&:before {
+				background-image: svg-url('<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="36px" height="24px" viewBox="0 0 36 24" zoomAndPan="disable"><style>line { stroke: #{_palette(fg-bold)}; stroke-width: 2px; }</style><line x1="0" y1="12" x2="34" y2="12" /><line x1="25" y1="4" x2="34" y2="12.5" /><line x1="25" y1="20" x2="34" y2="11.5" /></svg>');
+			}
+
+			&:after {
+				background-image: svg-url('<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="36px" height="24px" viewBox="0 0 36 24" zoomAndPan="disable"><style>line { stroke: #{_palette(highlight)}; stroke-width: 2px; }</style><line x1="0" y1="12" x2="34" y2="12" /><line x1="25" y1="4" x2="34" y2="12.5" /><line x1="25" y1="20" x2="34" y2="11.5" /></svg>');
+				opacity: 0;
+				z-index: 1;
+			}
+
+			&:hover, &:active {
+				&:after {
+					opacity: 1;
+				}
+			}
+
+			@include breakpoint('<=large') {
+				padding-right: 5em;
+			}
 		}
 
 		&.primary {
-			background-color: _palette(accent);
+			background-color: _palette(fg-bold);
 			box-shadow: none;
-			color: _palette(fg-bold) !important;
+			color: _palette(bg);
 
-			&:hover {
-				background-color: saturate(lighten(_palette(accent), 15), 10);
+			&:hover, &:active {
+				background-color: _palette(highlight);
+				color: _palette(bg) !important;
 			}
 
 			&:active {
-				background-color: desaturate(darken(_palette(accent), 3), 10);
+				background-color: desaturate(darken(_palette(highlight), 15), 5);
 			}
 		}
 
-		@include breakpoint('<=small') {
-			font-size: 0.7rem;
-			height: (_size(element-height) * 1.1);
-			line-height: (_size(element-height) * 1.1);
-
-			&.large {
-				font-size: 0.8rem;
-				height: _size(element-height) * 1.25;
-				line-height: _size(element-height) * 1.25;
-			}
-
-			&.small {
-				font-size: 0.6rem;
-				height: (_size(element-height) * 1);
-				line-height: (_size(element-height) * 1);
-			}
+		&.disabled,
+		&:disabled {
+			@include vendor('pointer-events', 'none');
+			cursor: default;
+			opacity: 0.25;
 		}
 	}
